@@ -1,0 +1,21 @@
+<form [formGroup]="myForm">
+    <div class="container">
+        <div class="container__input">
+            <label class="container__input_title">БИК</label>
+            <input id="name" formControlName="bik">
+        </div>
+        <span class="container__input">
+            <label class="container__input_title">Расчётный счёт</label>
+            <input formControlName="score">
+        </span>
+        <div class="error" *ngIf="bik?.invalid">Указан неверный БИК</div>
+        <div class="error" *ngIf="score?.invalid">Указан неверный Расчётный счёт</div>
+        <div class="error" *ngIf="!result">{{error}}</div>
+        <div class="success" *ngIf="result">Успешно!!!</div>
+        <div class="container__conditions">
+            <p-checkbox [binary]="true" formControlName="conditions"></p-checkbox>
+            <div>Согласен с условиями</div>
+        </div>
+        <button (click)="validateRs()" [disabled]="score?.invalid || bik?.invalid" type="button" class="button">Проверить</button>
+    </div>
+</form>
